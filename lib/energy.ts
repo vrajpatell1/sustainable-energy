@@ -15,7 +15,7 @@ const round = (value: number) => Number(value.toFixed(2));
 
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
-export function calculateCloudCost(input: CostCalculatorInput): CostCalculatorResult {
+export async function calculateCloudCost(input: CostCalculatorInput): Promise<CostCalculatorResult> {
   const profile = getCloudProfile(input.provider);
 
   if (!profile) {
@@ -47,7 +47,7 @@ export function calculateCloudCost(input: CostCalculatorInput): CostCalculatorRe
       : "Storage growth is manageable, so efficient autoscaling will likely drive the best savings."
   ];
 
-  saveCostEstimate({
+  await saveCostEstimate({
     workloadName: input.workloadName,
     provider: input.provider,
     hours: input.hours,
@@ -77,7 +77,9 @@ export function calculateCloudCost(input: CostCalculatorInput): CostCalculatorRe
   };
 }
 
-export function calculateTokenAnalysis(input: TokenAnalysisInput): TokenAnalysisResult {
+export async function calculateTokenAnalysis(
+  input: TokenAnalysisInput
+): Promise<TokenAnalysisResult> {
   const profile = getAiProfile(input.modelKey);
 
   if (!profile) {
@@ -105,7 +107,7 @@ export function calculateTokenAnalysis(input: TokenAnalysisInput): TokenAnalysis
       : "Use structured outputs to reduce unnecessary regeneration and lower token waste."
   ];
 
-  saveTokenAnalysis({
+  await saveTokenAnalysis({
     modelKey: input.modelKey,
     promptTokens: input.promptTokens,
     responseTokens: input.responseTokens,

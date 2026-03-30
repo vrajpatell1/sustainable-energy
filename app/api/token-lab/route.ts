@@ -33,7 +33,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const result = calculateTokenAnalysis({
+    const result = await calculateTokenAnalysis({
       modelKey,
       promptTokens,
       responseTokens,

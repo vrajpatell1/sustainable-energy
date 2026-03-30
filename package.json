@@ -5,16 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node .next/standalone/server.js"
+    "start": "next start"
   },
   "dependencies": {
-    "better-sqlite3": "^11.10.0",
+    "@neondatabase/serverless": "^1.0.1",
     "next": "^15.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^7.6.12",
     "@types/node": "^22.15.3",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",

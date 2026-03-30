@@ -41,7 +41,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const result = calculateCloudCost({
+    const result = await calculateCloudCost({
       workloadName,
       provider,
       hours,

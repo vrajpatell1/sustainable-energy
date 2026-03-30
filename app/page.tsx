@@ -3,8 +3,8 @@ import { getDashboardPayload } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
-export default function HomePage() {
-  const initialData = getDashboardPayload();
+export default async function HomePage() {
+  const initialData = await getDashboardPayload();
 
   return <DashboardShell initialData={initialData} />;
 }
