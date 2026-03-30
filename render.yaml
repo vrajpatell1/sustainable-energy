@@ -3,7 +3,10 @@ services:
     name: sustainable-energy-dashboard
     runtime: docker
     plan: starter
-    autoDeploy: true
+    repo: https://github.com/vrajpatell1/sustainable-energy
+    branch: main
+    autoDeployTrigger: commit
+    healthCheckPath: /
     disk:
       name: sustainable-energy-db
       mountPath: /app/db

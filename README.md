@@ -1,5 +1,7 @@
 # Sustainable Energy Intelligence Hub
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/vrajpatell1/sustainable-energy)
+
 A full-stack sustainable energy website built for your project brief. The platform includes:
 
 - Cloud cost calculation for compute, storage, and data transfer
@@ -31,6 +33,10 @@ npm run start
 ## Public hosting
 
 This project includes a `Dockerfile` and `render.yaml`, so you can deploy it on a public host such as Render.
+
+Direct one-click deploy:
+
+- https://render.com/deploy?repo=https://github.com/vrajpatell1/sustainable-energy
 
 Suggested deployment flow:
 
