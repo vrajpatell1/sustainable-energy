@@ -5,7 +5,7 @@ import "@/app/globals.css";
 export const metadata: Metadata = {
   title: "Sustainable Energy Intelligence Hub",
   description:
-    "A full-stack sustainable energy platform for cloud cost calculation, AI token efficiency, and cloud provider comparison."
+    "A sustainable energy project focused on cloud cost calculation, AI token efficiency, and provider comparison."
 };
 
 export default function RootLayout({

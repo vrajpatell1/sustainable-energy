@@ -152,11 +152,10 @@ export function DashboardShell({ initialData }: DashboardShellProps) {
       <section className="hero-card">
         <div className="hero-copy">
           <p className="eyebrow">Sustainable Energy Project</p>
-          <h1>Efficient computing, cloud sustainability, and AI token impact in one public-ready platform.</h1>
+          <h1>Efficient computing and cloud sustainability for modern digital systems.</h1>
           <p className="hero-text">
-            This website turns your assignment brief into a working product with frontend, backend,
-            and database support. It helps visitors estimate cloud cost, study AI energy usage,
-            and compare providers for real-world workloads.
+            Explore cloud cost calculation, sustainable token usage for AI, and provider comparison
+            for real-world workloads such as e-commerce platforms, monitoring systems, and learning hubs.
           </p>
           <div className="hero-actions">
             <a href="#calculator" className="primary-link">
@@ -183,10 +182,10 @@ export function DashboardShell({ initialData }: DashboardShellProps) {
             </div>
           </div>
           <div className="signal-card">
-            <p>Live system snapshot</p>
-            <strong>{dashboard.overview.snapshotsLogged} community calculations logged</strong>
+            <p>Live sustainability snapshot</p>
+            <strong>{dashboard.overview.snapshotsLogged} recent analyses recorded</strong>
             <small>
-              Each estimate is saved to the database so the dashboard can show recent activity.
+              Track recent cloud and AI studies while comparing cost, energy use, and carbon impact.
             </small>
           </div>
         </div>
@@ -196,17 +195,17 @@ export function DashboardShell({ initialData }: DashboardShellProps) {
         <article className="stat-card">
           <p>Cloud Cost Calculation</p>
           <strong>Storage, compute, and transfer cost</strong>
-          <span>Built for project requirement 2(a)</span>
+          <span>Estimate monthly cloud spending across core infrastructure categories.</span>
         </article>
         <article className="stat-card">
           <p>Sustainable Tokens for AI</p>
           <strong>Energy and carbon impact</strong>
-          <span>Built for project requirement 2(b)</span>
+          <span>Study how AI token usage affects electricity demand and emissions.</span>
         </article>
         <article className="stat-card">
           <p>Platform Comparison</p>
           <strong>Pricing, scale, and performance</strong>
-          <span>Built for project requirement 2(c)</span>
+          <span>Compare providers for realistic software workloads and growth patterns.</span>
         </article>
       </section>
 
@@ -322,7 +321,7 @@ export function DashboardShell({ initialData }: DashboardShellProps) {
               <span>
                 {costResult
                   ? `${costResult.profile.displayName} for ${costResult.workloadName}`
-                  : "The backend will save every estimate to the database."}
+                  : "Use the calculator to estimate cost and sustainability for a sample workload."}
               </span>
             </div>
 
@@ -348,7 +347,7 @@ export function DashboardShell({ initialData }: DashboardShellProps) {
             <ul className="insight-list">
               {(costResult?.insights ?? [
                 "Use the form to compare provider cost and sustainability trade-offs.",
-                "The API separates compute, storage, and transfer cost for a clearer report.",
+                "Separate storage, compute, and transfer costs to understand where spending grows fastest.",
                 "Each submission becomes a saved record for the recent activity feed."
               ]).map((insight) => (
                 <li key={insight}>{insight}</li>
@@ -517,7 +516,7 @@ export function DashboardShell({ initialData }: DashboardShellProps) {
         <article className="panel">
           <div className="panel-heading">
             <p className="eyebrow">Recent Cloud Estimates</p>
-            <h2>Saved from the backend into the database</h2>
+            <h2>Recent cloud cost calculation history</h2>
           </div>
           <div className="activity-list">
             {dashboard.recentCosts.length > 0 ? (
@@ -560,24 +559,24 @@ export function DashboardShell({ initialData }: DashboardShellProps) {
 
       <section className="method-grid">
         <article className="method-card">
-          <p className="eyebrow">Frontend</p>
-          <h3>Interactive dashboard</h3>
-          <span>Responsive Next.js interface with custom visuals, forms, and live comparison views.</span>
+          <p className="eyebrow">Storage Cost</p>
+          <h3>Capacity planning</h3>
+          <span>Review how growing storage needs influence monthly cloud cost over time.</span>
         </article>
         <article className="method-card">
-          <p className="eyebrow">Backend</p>
-          <h3>API routes</h3>
-          <span>Server-side calculation endpoints for cloud estimation, token analysis, and dashboard data.</span>
+          <p className="eyebrow">Compute Cost</p>
+          <h3>Workload efficiency</h3>
+          <span>Compare how processor and memory choices affect price and energy consumption.</span>
         </article>
         <article className="method-card">
-          <p className="eyebrow">Database</p>
-          <h3>SQLite persistence</h3>
-          <span>Seeded provider data plus saved user calculations for recent activity and reporting.</span>
+          <p className="eyebrow">Token Optimization</p>
+          <h3>Smarter AI usage</h3>
+          <span>Identify ways to reduce AI energy demand through better prompts and model selection.</span>
         </article>
         <article className="method-card">
-          <p className="eyebrow">Hosting</p>
-          <h3>Public deployment ready</h3>
-          <span>Docker and Render config included so the app can be published on a public URL.</span>
+          <p className="eyebrow">Platform Comparison</p>
+          <h3>Real-world scenarios</h3>
+          <span>Evaluate pricing, scalability, performance, and latency across provider options.</span>
         </article>
       </section>
     </main>
