@@ -53,11 +53,15 @@ select {
 .provider-card,
 .method-card,
 .stat-card,
-.comparison-section {
+.comparison-section,
+.insight-spotlight,
+.playbook-card,
+.spotlight-card {
   backdrop-filter: blur(18px);
   background: var(--panel);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+  animation: rise-up 680ms ease both;
 }
 
 .hero-card {
@@ -204,7 +208,10 @@ select {
 .stat-card span,
 .provider-card span,
 .method-card span,
-.result-summary span {
+.result-summary span,
+.spotlight-card span,
+.spotlight-text,
+.playbook-list {
   color: var(--muted);
   line-height: 1.5;
 }
@@ -213,15 +220,20 @@ select {
 .feature-grid,
 .provider-strip,
 .activity-grid,
-.method-grid {
+.method-grid,
+.insight-band {
   display: grid;
   gap: 18px;
   margin-top: 20px;
 }
 
 .stats-grid,
-.method-grid {
+.insight-band {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.method-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .feature-grid,
@@ -338,10 +350,107 @@ select {
   display: grid;
   gap: 10px;
   border-width: 1.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.provider-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -32px -32px auto;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.38), transparent 68%);
 }
 
 .comparison-section {
   margin-top: 20px;
+}
+
+.insight-band {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.insight-spotlight,
+.playbook-card {
+  padding: 24px;
+  border-radius: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.insight-spotlight {
+  background:
+    radial-gradient(circle at top right, rgba(43, 134, 197, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(249, 244, 236, 0.94));
+}
+
+.playbook-card {
+  background:
+    radial-gradient(circle at top left, rgba(239, 157, 45, 0.15), transparent 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(246, 241, 232, 0.96));
+}
+
+.playbook-card h3 {
+  margin: 10px 0 12px;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+  font-size: 2rem;
+  line-height: 1.05;
+}
+
+.playbook-list {
+  display: grid;
+  gap: 12px;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.spotlight-text {
+  margin: 14px 0 0;
+  max-width: 58ch;
+}
+
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.spotlight-card {
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.spotlight-card p {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+}
+
+.spotlight-card strong {
+  display: block;
+  margin: 10px 0 8px;
+  font-size: 1.35rem;
+  line-height: 1.15;
+}
+
+.theme-leaf {
+  border-color: rgba(62, 155, 95, 0.28);
+  box-shadow: 0 16px 34px rgba(62, 155, 95, 0.12);
+}
+
+.theme-sun {
+  border-color: rgba(239, 157, 45, 0.28);
+  box-shadow: 0 16px 34px rgba(239, 157, 45, 0.12);
+}
+
+.theme-water {
+  border-color: rgba(43, 134, 197, 0.28);
+  box-shadow: 0 16px 34px rgba(43, 134, 197, 0.12);
 }
 
 .scenario-tabs {
@@ -418,19 +527,43 @@ select {
 
 .method-card {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(248, 245, 237, 0.92));
+  position: relative;
+  overflow: hidden;
+}
+
+.method-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-leaf), var(--accent-sun), var(--accent-water));
+}
+
+@keyframes rise-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 980px) {
   .hero-card,
   .feature-grid,
   .activity-grid,
-  .scenario-board {
+  .scenario-board,
+  .insight-band {
     grid-template-columns: 1fr;
   }
 
   .stats-grid,
   .provider-strip,
-  .method-grid {
+  .method-grid,
+  .spotlight-grid {
     grid-template-columns: 1fr;
   }
 }

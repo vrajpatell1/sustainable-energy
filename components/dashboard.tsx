@@ -79,6 +79,21 @@ export function DashboardShell({ initialData }: DashboardShellProps) {
   const currentScenario =
     dashboard.scenarios.find((scenario) => scenario.scenario === selectedScenario) ??
     dashboard.scenarios[0];
+  const lowestCostEntry = currentScenario?.entries.reduce((best, entry) =>
+    entry.monthlyCost < best.monthlyCost ? entry : best
+  );
+  const strongestScaleEntry = currentScenario?.entries.reduce((best, entry) =>
+    entry.scalability > best.scalability ? entry : best
+  );
+  const fastestEntry = currentScenario?.entries.reduce((best, entry) =>
+    entry.latencyMs < best.latencyMs ? entry : best
+  );
+  const leanestModel = dashboard.aiProfiles.reduce((best, profile) =>
+    profile.energyPerThousandTokens < best.energyPerThousandTokens ? profile : best
+  );
+  const highestSavingsModel = dashboard.aiProfiles.reduce((best, profile) =>
+    profile.optimizedSavingPct > best.optimizedSavingPct ? profile : best
+  );
 
   async function refreshDashboard() {
     const response = await fetch("/api/dashboard", { cache: "no-store" });
@@ -488,6 +503,67 @@ export function DashboardShell({ initialData }: DashboardShellProps) {
             <span>{provider.highlight}</span>
           </article>
         ))}
+      </section>
+
+      <section className="insight-band">
+        <article className="insight-spotlight">
+          <div className="panel-heading">
+            <p className="eyebrow">Scenario Spotlight</p>
+            <h2>{currentScenario?.scenarioLabel ?? "Current scenario"} at a glance</h2>
+          </div>
+          <p className="spotlight-text">
+            This quick summary highlights the cheapest modeled option, the strongest scaling profile,
+            and the fastest response time for the selected workload.
+          </p>
+
+          <div className="spotlight-grid">
+            <div className="spotlight-card theme-leaf">
+              <p>Lowest cost</p>
+              <strong>
+                {lowestCostEntry
+                  ? `${lowestCostEntry.provider.toUpperCase()} · ${formatMoney(lowestCostEntry.monthlyCost)}`
+                  : "Select a scenario"}
+              </strong>
+              <span>Best monthly cost in the current comparison.</span>
+            </div>
+
+            <div className="spotlight-card theme-sun">
+              <p>Highest scalability</p>
+              <strong>
+                {strongestScaleEntry
+                  ? `${strongestScaleEntry.provider.toUpperCase()} · ${strongestScaleEntry.scalability}/10`
+                  : "Select a scenario"}
+              </strong>
+              <span>Strongest score for growth and workload expansion.</span>
+            </div>
+
+            <div className="spotlight-card theme-water">
+              <p>Fastest latency</p>
+              <strong>
+                {fastestEntry
+                  ? `${fastestEntry.provider.toUpperCase()} · ${fastestEntry.latencyMs} ms`
+                  : "Select a scenario"}
+              </strong>
+              <span>Quickest response time in the current scenario.</span>
+            </div>
+          </div>
+        </article>
+
+        <article className="playbook-card">
+          <p className="eyebrow">Efficiency Playbook</p>
+          <h3>High-impact sustainability moves for cloud and AI workloads</h3>
+          <ul className="playbook-list">
+            <li>Reduce unnecessary data transfer before increasing infrastructure size.</li>
+            <li>
+              Start AI assistants with <strong>{leanestModel.label}</strong> for simple tasks and only
+              escalate when deeper reasoning is needed.
+            </li>
+            <li>
+              Prompt optimization can save up to <strong>{highestSavingsModel.optimizedSavingPct}%</strong> of
+              modeled token energy in this project dataset.
+            </li>
+          </ul>
+        </article>
       </section>
 
       <section className="comparison-section" id="comparison">
